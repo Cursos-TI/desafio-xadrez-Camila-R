@@ -1,54 +1,74 @@
 #include <stdio.h>
 
-int main(){
+//Torre
+void movimentoTorre(int casas){
+    if (casas > 0){
+        printf("Direita \n");
+        movimentoTorre(casas - 1);
+    }
+    
+}
 
-    int casaRainha = 1;
-    int casaTorre = 1;
-    int casaBispo = 1;
-    int casaCavaloL = 1;
+//Rainha
+void movimentoRainha(int casas){
+    if (casas > 0){
+        printf("Esquerda \n");
+        movimentoRainha(casas - 1);
+    }
+    
+}
+
+//Bispo
+void movimentoBispo(int casas){
+    while (casas > 0){
+
+        printf("Cima \n");
+
+        for (int i = casas; i >= casas; i--){
+            printf("Direita \n");
+        }
+        
+        casas--;
+    }
+}
+
+int main(){
 
     //Rainha
     // movimento da Rainha oito casas para a esquerda
     printf("Movimento Rainha \n");
-    while (casaRainha <= 8){
-        printf("Esquerda \n");
-        casaRainha++;
-    }
-    
+    movimentoRainha(8);
     printf("\n");
 
     //Torre
     // movimento da Torre cinco casas para a direita
     printf("Movimento Torre \n");
-    do{
-       printf("Direita \n");
-
-       casaTorre++;
-    } while (casaTorre <= 5);
-
+    movimentoTorre(5);
     printf("\n");
     
     //Bispo
     // movimento do Bispo cinco casas na diagonal para cima e à direita
     printf("Movimento Bispo \n");
-    for (casaBispo = 1; casaBispo <= 5; casaBispo++){
-        printf("Cima, Direita \n");
-    };
-
+    movimentoBispo(5);
     printf("\n");
 
     //Cavalo
-    // movimento do Cavalo duas casas para baixo e uma casa para a esquerda
+    // movimento do Cavalo duas casas para cima e uma casa para a direita
     printf("Movimento do Cavalo \n");
-    while (casaCavaloL > 0){
+    for (int i = 0; i < 3; i++){
 
-        for (int casaCavaloHV = 1; casaCavaloHV <= 2; casaCavaloHV++){
-            printf("Baixo \n");
+        if (i == 0){
+            printf("Cima \n");
+            continue;
+        }         
+        if (i == 1 || i == 2){
+            printf("Direita \n");
+            continue;
+        } else{
+            break;
         }
         
-        printf("Esquerda \n");
-        casaCavaloL--;
-        
+
     }
     
     return 0;
